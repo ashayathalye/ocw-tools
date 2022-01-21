@@ -1,6 +1,5 @@
 import json
 import requests
-import itertools
 
 open_learning_rooms = {
     "2-131",
