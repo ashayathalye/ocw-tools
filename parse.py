@@ -91,37 +91,8 @@ def parse_time(time):
         days = time[0]
         interval = time[2][1:]
         return days + interval + "PM"
-        # interval = time[2][1:]
-        # range = interval.split("-")
-        # day = time[0]
-        # if len(range) == 1:
-        #     start, end = range[0], str(int(range[0])+1)
-        # elif len(range) == 2:
-        #     start, end = range
-        # time = day+start+"PM"+"-"+end+"PM"
     else:
         return time[0]
-        # # day of week information is before the first number in the string
-        # # so find the index of the first occurence of a number
-        # time = time[0]
-        #
-        # # handle rare cases
-        # if time in ("*TO", "null"):
-        #     return "TBD"
-        #
-        # index_of_first_num = len(time)
-        # for i in range(10):
-        #     try:
-        #         idx = time.index(str(i))
-        #         index_of_first_num = min(idx, index_of_first_num)
-        #     except ValueError:
-        #         pass
-        # days = time[:index_of_first_num]
-        # time_interval = time[index_of_first_num:]
-        # print(time)
-        # print(time_interval)
-        # interval = parse_interval(time_interval)
-        # print(interval)
 
 def main():
     by_class = {}
