@@ -46,6 +46,11 @@ is_and_t_rooms = {
     "66-168"
 }
 
+sloan_rooms = {
+    "E51-151",
+    "E51-395"
+}
+
 
 term = '2022SP'
 
@@ -116,6 +121,12 @@ def main():
                     "time": time,
                     "setup": "IS&T"
                 }
+            if course_number not in by_class and room in sloan_rooms:
+                by_class[course_number] = {
+                    "room": room,
+                    "time": time,
+                    "setup": "SLOAN"
+                }
 
     for c in raw_classes:
         t = c["type"]
@@ -128,14 +139,18 @@ def main():
 
     open_learning = []
     is_and_t = []
+    sloan = []
     for k, v in by_class.items():
         if v["setup"] == "OPEN_LEARNING":
             open_learning.append((k, v["room"], v["time"], v["in-charge"]))
         elif v["setup"] == "IS&T":
             is_and_t.append((k, v["room"], v["time"], v["in-charge"]))
-
+        elif v["setup"] == "SLOAN":
+            sloan.append((k, v["room"], v["time"], v["in-charge"]))
+            
     open_learning.sort(key=lambda x: course_to_int(x[0]))
     is_and_t.sort(key=lambda x: course_to_int(x[0]))
+    sloan.sort(key=lambda x: course_to_int(x[0]))
 
     print("Classes in Open Learning's auto-capture rooms:")
     for c in open_learning:
@@ -144,6 +159,11 @@ def main():
     print()
     print("Classes in IS&T's auto-capture rooms:")
     for c in is_and_t:
+        num, loc, time, prof = c
+        print(f"{num : <10}{loc : <10}{time : <15}{prof : <30}")
+    print()
+    print("Classes in Sloan's rooms:")
+    for c in sloan:
         num, loc, time, prof = c
         print(f"{num : <10}{loc : <10}{time : <15}{prof : <30}")
 
