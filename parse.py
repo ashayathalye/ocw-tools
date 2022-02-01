@@ -47,10 +47,17 @@ is_and_t_rooms = {
 }
 
 sloan_rooms = {
+    "E51-145",
+    "E51-149",
     "E51-151",
+    "E51-315",
+    "E51-325",
+    "E51-335",
+    "E51-345",
+    "E51-372",
+    "E51-376",
     "E51-395"
 }
-
 
 term = '2022SP'
 
@@ -147,10 +154,11 @@ def main():
             is_and_t.append((k, v["room"], v["time"], v["in-charge"]))
         elif v["setup"] == "SLOAN":
             sloan.append((k, v["room"], v["time"], v["in-charge"]))
-            
+
     open_learning.sort(key=lambda x: course_to_int(x[0]))
     is_and_t.sort(key=lambda x: course_to_int(x[0]))
     sloan.sort(key=lambda x: course_to_int(x[0]))
+    # sloan.sort(key=lambda x: x[1])
 
     print("Classes in Open Learning's auto-capture rooms:")
     for c in open_learning:
