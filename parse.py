@@ -1,6 +1,8 @@
 import json
 import requests
 
+# https://registrar.mit.edu/sites/default/files/2022-08/classrooms_with_lecture_capture_fall_2022.pdf
+
 open_learning_rooms = {
     "2-131",
     "2-142",
